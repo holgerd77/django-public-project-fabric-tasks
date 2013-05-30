@@ -8,4 +8,5 @@
 .project
 .settings
 .pydevproject
+config-scripts
 fabfiles/fab_settings.py

@@ -61,3 +61,17 @@ def install_postgres_as_db():
     run("sudo -u postgres psql -c \"CREATE USER " + env.db_postgres_user + " WITH PASSWORD '" + env.db_postgres_user_pwd + "'\"")
     run('sudo -u postgres psql -c "CREATE DATABASE ' + env.db_postgres_user + ' WITH OWNER=' + env.db_postgres_user + '"')
 
+
+@task()
+def install_webserver_config():
+    put('config-scripts/nginx/public-project', '/etc/nginx/sites-available/public-project', True)
+    with settings(warn_only=True):
+        sudo("ln -s /etc/nginx/sites-available/public-project /etc/nginx/sites-enabled/public-project")
+    sudo("/etc/init.d/nginx reload")
+    
+
+@task(alias='uwsc')
+def install_appserver_config():
+    put('config-scripts/gunicorn/gunicorn-public-project.sh', '/etc/gunicorn-public-project.sh', True, False, mode=0755)
+    put('config-scripts/gunicorn/supervisor/gunicorn-public-project.conf', '/etc/supervisor/conf.d/gunicorn-public-project.conf', True)
+    sudo('supervisorctl reload')

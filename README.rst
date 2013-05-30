@@ -28,6 +28,9 @@ You can get a list of available tasks with::
     fabric --list
 
 Create a settings file ``fabfiles/fab_settings.py`` using the provided ``fabfiles/fab_settings_template.py``
-file to get things up and running.
+file to get the fabric tasks up and running.
+
+There are also some config file templates you can use. Copy the folder ``config-scripts-templates`` to 
+``config-scripts`` and adopt the scripts to your needs.
  
 
