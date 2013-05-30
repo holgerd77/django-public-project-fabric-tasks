@@ -1,0 +1,11 @@
+*.py[co]
+*.gz
+*.zip
+*.tar
+*.log
+*.swp
+.DS_Store
+.project
+.settings
+.pydevproject
+fabfiles/fab_settings.py
