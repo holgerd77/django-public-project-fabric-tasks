@@ -11,6 +11,7 @@ def prepare_server():
     sudo("apt-get -y install python-pip")
     sudo("apt-get -y install git")
     sudo("apt-get -y install gcc")
+    sudo("apt-get -y install python-dev")
 
 @task()
 def install_webserver():
