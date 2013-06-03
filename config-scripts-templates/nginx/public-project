@@ -8,11 +8,10 @@ server {
     charset_types application/json; #API
     
     location /media/ {
-        root /root/of/your/media/folder;
+        root /root/of/your/media/folder; #ommit media folder itself
     }
     location /static/ {
-        autoindex on;
-        root /root/of/your/static/folder;
+        root /root/of/your/static/folder; #ommit static folder itself
     }
     location / {
         #maintenance mode which can be activated/deactivated by renaming a script
