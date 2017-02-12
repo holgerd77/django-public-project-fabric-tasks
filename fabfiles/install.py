@@ -8,10 +8,7 @@ from fabfiles import fab_settings
 def prepare_server():
     sudo("apt-get -y update")
     sudo("apt-get -y upgrade")
-    sudo("apt-get -y install python-pip")
-    sudo("apt-get -y install git")
-    sudo("apt-get -y install gcc")
-    sudo("apt-get -y install python-dev")
+    sudo("apt-get -y install python-pip git gcc python-dev")
 
 @task()
 def install_webserver():
@@ -60,7 +57,7 @@ def install_postgres_as_db():
     run("sudo -u postgres psql -c \"ALTER USER postgres WITH PASSWORD '" + env.db_postgres_postgres_pwd + "';\"")
     sudo("adduser " + env.db_postgres_user)
     run("sudo -u postgres psql -c \"CREATE USER " + env.db_postgres_user + " WITH PASSWORD '" + env.db_postgres_user_pwd + "'\"")
-    run('sudo -u postgres psql -c "CREATE DATABASE ' + env.db_postgres_user + ' WITH OWNER=' + env.db_postgres_user + '"')
+    run('sudo -u postgres psql -c \"CREATE DATABASE ' + env.db_postgres_user + ' WITH OWNER=' + env.db_postgres_user + '\"')
 
 
 @task()
